@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeFragment(Fragment ment) {
-
         manager = getSupportFragmentManager();
         mTransaction = manager.beginTransaction();
         if (fm != null) {
@@ -119,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
             mTransaction.show(ment);
         }
         mTransaction.commit();
-
         // 记录当前的Fragment
         fm = ment;
     }
