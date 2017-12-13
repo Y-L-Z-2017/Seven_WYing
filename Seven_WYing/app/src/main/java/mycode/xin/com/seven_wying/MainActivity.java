@@ -14,6 +14,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import mycode.xin.com.seven_wying.fragmetns.ChoicenessFragment;
 import mycode.xin.com.seven_wying.fragmetns.DiscoverFragment;
 import mycode.xin.com.seven_wying.fragmetns.MineFragment;
@@ -32,12 +33,13 @@ public class MainActivity extends AppCompatActivity {
     private MineFragment mMineFragment;
     private SpecialFragment mSpecialFragment;
     private FragmentTransaction mTransaction;
+    private Unbinder bind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        bind = ButterKnife.bind(this);
         mChoicenessFragment = new ChoicenessFragment();
         mDiscoverFragment = new DiscoverFragment();
         mMineFragment = new MineFragment();
@@ -122,5 +124,9 @@ public class MainActivity extends AppCompatActivity {
         fm = ment;
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bind.unbind();
+    }
 }
